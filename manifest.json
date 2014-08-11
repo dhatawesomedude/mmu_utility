@@ -1,0 +1,18 @@
+{
+    "name": "mmu-utility",
+    "description" : "mmu google-calendar/timetable sync",
+    "version" : "0.0.1",
+    "manifest_version": 2,
+    "app": {
+        "background" : {
+            "scripts" : ["js/background.js"]
+        }
+    },
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "permissions": [
+        "https://icems.mmu.edu.my/sic/courses/crdetails_02.jsp",
+        "https://icems.mmu.edu.my/sic/validate_sts.jsp",
+        "https://icems.mmu.edu.my/sic/vlogin.jsp",
+        "storage"
+    ]
+}
