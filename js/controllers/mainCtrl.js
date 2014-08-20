@@ -29,13 +29,13 @@ angular.module('MainCtrl', ['ngCookies'])
                     //console.log(headers());
                     $http({method: 'GET', url: 'https://icems.mmu.edu.my/sic/courses/crdetails_02.jsp', headers: {'Accept': 'document'}}).
                         success(function(data, status){
-                            console.log(data.contentType);
 
                             var parser = new DOMParser();
-                            var doc = parser.parseFromString(data, "text/xml");
+                            var doc = parser.parseFromString(data, "text/html");
+                            //console.log(doc.getElementsByTagName('table')[8]);
+                            console.log(doc.firstChild.children[2]);
                             console.log(doc);
-                            console.log(doc.firstChild);
-                            
+
 
                             //var tableToJson = require('tabletojson');
                             //var tables = tableToJson.convert(data);
