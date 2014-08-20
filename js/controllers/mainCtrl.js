@@ -27,13 +27,19 @@ angular.module('MainCtrl', ['ngCookies'])
             $http({method: 'POST', url: 'https://icems.mmu.edu.my/sic/vlogin.jsp', params: {id : this._id, pwd : this._pwd}, withCredentials : true}).
                 success(function(data, status, headers, config) {
                     //console.log(headers());
-                    $http({method: 'GET', url: 'https://icems.mmu.edu.my/sic/courses/crdetails_02.jsp'}).
+                    $http({method: 'GET', url: 'https://icems.mmu.edu.my/sic/courses/crdetails_02.jsp', headers: {'Accept': 'document'}}).
                         success(function(data, status){
-                            console.log(data);
+                            console.log(data.contentType);
 
-                            var tableToJson = require('tabletojson');
-                            var tables = tableToJson.convert(data);
-                            console.log(tables);
+                            var parser = new DOMParser();
+                            var doc = parser.parseFromString(data, "text/xml");
+                            console.log(doc);
+                            console.log(doc.firstChild);
+                            
+
+                            //var tableToJson = require('tabletojson');
+                            //var tables = tableToJson.convert(data);
+                            //console.log(tables);
                             //var firstTableAsJson = tablesAsJson[0];
                             //var secondTableAsJson = tablesAsJson[1];
                         }).
